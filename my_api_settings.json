@@ -1,0 +1,494 @@
+{
+    "port": "3000",
+    "apiRoute": "",
+    "packageInfo": {
+        "name": "moodlejs",
+        "version": "1.0.0",
+        "description": "dev moodlejs",
+        "author": "adishare"
+    },
+    "authConfig": {
+        "type": "Basic Auth",
+        "read": {
+            "user": "admin",
+            "password": "admin"
+        },
+        "write": {
+            "user": "admin",
+            "password": "admin"
+        },
+        "delete": {
+            "user": "admin",
+            "password": "admin"
+        }
+    },
+    "databaseConfig": {
+        "prod": {
+            "username": "postgres",
+            "password": null,
+            "database": "moodlereactjs",
+            "host": "127.0.0.1",
+            "port": "5432",
+            "dialect": "postgres"
+        },
+        "dev": {
+            "username": "postgres",
+            "password": null,
+            "database": "moodlereactjs",
+            "host": "127.0.0.1",
+            "port": "5432",
+            "dialect": "postgres"
+        }
+    },
+    "models": [
+        {
+            "modelName": "User",
+            "tableName": "Users",
+            "routeEndpoint": "users",
+            "fields": [
+                { "name": "auth", "type": "STRING", "allowNull": false },
+                { "name": "policyagreed", "type": "BOOLEAN", "allowNull": false },
+                { "name": "deleted", "type": "BOOLEAN", "allowNull": false },
+                { "name": "confirmed", "type": "BOOLEAN", "allowNull": false },
+                { "name": "suspended", "type": "BOOLEAN", "allowNull": false },
+                { "name": "mnehostid", "type": "INTEGER", "allowNull": true },
+                { "name": "username", "type": "STRING", "allowNull": false },
+                { "name": "password", "type": "STRING", "allowNull": false },
+                { "name": "idnumber", "type": "STRING", "allowNull": false },
+                { "name": "firstname", "type": "STRING", "allowNull": false }, 
+                { "name": "lastname", "type": "STRING", "allowNull": false },
+                { "name": "email", "type": "STRING", "allowNull": false },
+                { "name": "emailstop", "type": "BOOLEAN", "allowNull": false },
+                { "name": "facebook", "type": "STRING", "allowNull": true },
+                { "name": "instagram", "type": "STRING", "allowNull": true },
+                { "name": "twitter", "type": "STRING", "allowNull": true },
+                { "name": "whatsapp", "type": "STRING", "allowNull": true },
+                { "name": "phone", "type": "STRING", "allowNull": true },
+                { "name": "institution", "type": "STRING", "allowNull": true },
+                { "name": "department", "type": "STRING", "allowNull": true },
+                { "name": "address", "type": "STRING", "allowNull": true },
+                { "name": "city", "type": "STRING", "allowNull": true },
+                { "name": "country", "type": "STRING", "allowNull": true },
+                { "name": "lang", "type": "STRING", "allowNull": true },
+                { "name": "calendartype", "type": "STRING", "allowNull": true },
+                { "name": "theme", "type": "STRING", "allowNull": true },
+                { "name": "timezone", "type": "STRING", "allowNull": true },
+                { "name": "firstaccess", "type": "INTEGER", "allowNull": false },
+                { "name": "lastaccess", "type": "INTEGER", "allowNull": false },
+                { "name": "lastlogin", "type": "INTEGER", "allowNull": false },
+                { "name": "currentlogin", "type": "INTEGER", "allowNull": false },
+                { "name": "lastip", "type": "STRING", "allowNull": false },
+                { "name": "secret", "type": "STRING", "allowNull": true },
+                { "name": "picture", "type": "INTEGER", "allowNull": true },
+                { "name": "url", "type": "STRING", "allowNull": true },
+                { "name": "description", "type": "STRING", "allowNull": true },
+                { "name": "descriptionformat", "type": "STRING", "allowNull": true },
+                { "name": "mailformat", "type": "BOOLEAN", "allowNull": true },
+                { "name": "maildigest", "type": "BOOLEAN", "allowNull": true },
+                { "name": "maildisplay", "type": "INTEGER", "allowNull": true },
+                { "name": "autosubscribe", "type": "BOOLEAN", "allowNull": true },
+                { "name": "trackforum", "type": "BOOLEAN", "allowNull": true },
+                { "name": "timecreated", "type": "INTEGER", "allowNull": false },
+                { "name": "timemodified", "type": "INTEGER", "allowNull": false },
+                { "name": "trustbitmask", "type": "INTEGER", "allowNull": false },
+                { "name": "imgalt", "type": "STRING", "allowNull": true },
+                { "name": "lastnamephonetic", "type": "STRING", "allowNull": true },
+                { "name": "firstnamephonetic", "type": "STRING", "allowNull": true },
+                { "name": "middlename", "type": "STRING", "allowNull": true },
+                { "name": "alternatename", "type": "STRING", "allowNull": true }
+            ],
+            "associations": [
+                { "type": "belongsTo", "model": "UserEnrolment", "foreignKey": "UserId", "include": false },
+                { "type": "belongsTo", "model": "UserEnrolment", "foreignKey": "modifierId", "include": false }
+            ]
+        },
+        {
+            "modelName": "Course",
+            "tableName": "Courses",
+            "routeEndpoint": "courses",
+            "fields": [
+                {
+                    "name": "category",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "sortorder",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "startdate",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "enddate",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "marker",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "maxbytes",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "defaultgroupingid",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "timecreated",
+                    "type": "INTEGER",
+                    "allowNull": "false"
+                },
+                {
+                    "name": "timemodified",
+                    "type": "INTEGER",
+                    "allowNull": "false"
+                },
+                {
+                    "name": "cacherev",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "visible",
+                    "type": "STRING",
+                    "allowNull": "false"
+                },
+                {
+                    "name": "visibleold",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "requested",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "enablecompletion",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "completionnotify",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "summary",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "newsitems",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "legacyfiles",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "showreports",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "groupmode",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "groupmodeforce",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "summaryformat",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "showgrades",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "fullname",
+                    "type": "STRING",
+                    "allowNull": "false"
+                },
+                {
+                    "name": "shortname",
+                    "type": "STRING",
+                    "allowNull": "false"
+                },
+                {
+                    "name": "idnumber",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "calendartype",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "theme",
+                    "type": "STRING",
+                    "allowNull": "true"
+                }
+            ],
+            "associations": [
+                { "type": "hasMany", "model": "CourseCategory", "foreignKey": "category", "include": false },
+                { "type": "belongsTo", "model": "Enrol", "foreignKey": "courseId", "include": false }                
+
+            ]
+        },
+        {
+            "modelName": "CourseCategory",
+            "tableName": "CourseCategories",
+            "routeEndpoint": "courseCategories",
+            "fields": [
+                { "name": "name", "type": "STRING", "allowNull": false },
+                { "name": "idnumber", "type": "STRING", "allowNull": true },
+                { "name": "description", "type": "STRING", "allowNull": true },
+                { "name": "descriptionformat", "type": "INTEGER", "allowNull": true },
+                { "name": "parent", "type": "INTEGER", "allowNull": true },
+                { "name": "sortorder", "type": "INTEGER", "allowNull": true },
+                { "name": "coursecount", "type": "INTEGER", "allowNull": true },
+                { "name": "visible", "type": "BOOLEAN", "allowNull": true },
+                { "name": "visibleold", "type": "BOOLEAN", "allowNull": true },
+                { "name": "timemodified", "type": "INTEGER", "allowNull": true },
+                { "name": "depth", "type": "INTEGER", "allowNull": true },
+                { "name": "path", "type": "STRING", "allowNull": true },
+                { "name": "theme", "type": "STRING", "allowNull": true }
+            ],
+            "associations": [
+                { "type": "belongsTo", "model": "Course", "foreignKey": "category", "include": false },
+                { "type": "belongsTo", "model": "CourseCategory", "foreignKey": "parent", "include": false },
+                { "type": "hasMany", "model": "CourseCategory", "foreignKey": "CourseCategoryId", "include": false }
+            ]
+        },
+        {
+            "modelName": "Enrol",
+            "tableName": "Enrols",
+            "routeEndpoint": "enrols",
+            "fields": [
+                {
+                    "name": "status",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "courseid",
+                    "type": "INTEGER",
+                    "allowNull": "false"
+                },
+                {
+                    "name": "sortorder",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "enrolperiod",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "enrolstartdate",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "enrolenddate",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "expirythreshold",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "roleid",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customint1",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customint2",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customint3",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customint4",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customint5",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customint6",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customint7",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customint8",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "timecreated",
+                    "type": "INTEGER",
+                    "allowNull": "false"
+                },
+                {
+                    "name": "timemodified",
+                    "type": "INTEGER",
+                    "allowNull": "false"
+                },
+                {
+                    "name": "expirynotify",
+                    "type": "BOOLEAN",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "notifyall",
+                    "type": "BOOLEAN",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customdec1",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customdec2",
+                    "type": "INTEGER",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customtext1",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customtext2",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customtext3",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customtext4",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "enrol",
+                    "type": "STRING",
+                    "allowNull": "false"
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "allowNull": "false"
+                },
+                {
+                    "name": "password",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "cost",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customchar1",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customchar2",
+                    "type": "STRING",
+                    "allowNull": "true"
+                },
+                {
+                    "name": "customchar3",
+                    "type": "STRING",
+                    "allowNull": "true"
+                }
+            ],
+            "associations": [
+                { "type": "hasMany", "model": "Course", "foreignKey": "CourseId", "include": false },
+                { "type": "belongsTo", "model": "UserEnrolment", "foreignKey": "enrolId", "include": false }
+            ]
+        },
+        {
+            "modelName": "UserEnrolment",
+            "tableName": "UserEnrolments",
+            "routeEndpoint": "userEnrolments",
+            "fields": [
+                { "name": "status", "type": "INTEGER", "allowNull": false },
+                { "name": "enrolId", "type": "INTEGER", "allowNull": false },
+                { "name": "userId", "type": "INTEGER", "allowNull": false },
+                { "name": "timestart", "type": "INTEGER", "allowNull": false },
+                { "name": "timeend", "type": "INTEGER", "allowNull": false },
+                { "name": "modifierId", "type": "INTEGER", "allowNull": false },
+                { "name": "timecreated", "type": "INTEGER", "allowNull": false },
+                { "name": "timemodified", "type": "INTEGER", "allowNull": false }
+            ],
+            "associations": [
+                { "type": "hasMany", "model": "User", "foreignKey": "UserId", "include": false },                
+                { "type": "hasMany", "model": "User", "foreignKey": "modifierId", "include": false },                
+                { "type": "hasMany", "model": "Enrol", "foreignKey": "EnrolId", "include": false }                
+            ]
+        }
+    ]
+}

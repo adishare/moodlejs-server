@@ -46,15 +46,15 @@ module.exports = function(sequelize, DataTypes) {
     Enrol.associate = function(models) { 
         Enrol.hasMany(
             models.Course,
-            {
-                foreignKey: 'CourseId'
-            }
+            // {
+            //     foreignKey: 'CourseId'
+            // }
         );
         Enrol.belongsTo(
             models.UserEnrolment,
-            {
-                foreignKey: 'enrolId'
-            }
+            // {
+            //     foreignKey: 'enrolId'
+            // }
         );
     };
     return Enrol;

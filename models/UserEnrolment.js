@@ -20,21 +20,21 @@ module.exports = function(sequelize, DataTypes) {
     UserEnrolment.associate = function(models) { 
         UserEnrolment.hasMany(
             models.User,
-            {
-                foreignKey: 'UserId'
-            }
+            // {
+            //     foreignKey: 'UserId'
+            // }
         );
         UserEnrolment.hasMany(
             models.User,
-            {
-                foreignKey: 'modifierId'
-            }
+            // {
+            //     foreignKey: 'modifierId'
+            // }
         );
         UserEnrolment.hasMany(
             models.Enrol,
-            {
-                foreignKey: 'EnrolId'
-            }
+            // {
+            //     foreignKey: 'EnrolId'
+            // }
         );
     };
     return UserEnrolment;

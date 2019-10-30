@@ -23,24 +23,18 @@ module.exports = function(sequelize, DataTypes) {
         }
     );
     CourseCategory.associate = function(models) { 
-        CourseCategory.belongsTo(
-            models.Course,
-            {
-                foreignKey: 'category'
-            }
-        );
-        CourseCategory.belongsTo(
-            models.CourseCategory,
-            {
-                foreignKey: 'parent'
-            }
-        );
         CourseCategory.hasMany(
-            models.CourseCategory,
-            {
-                foreignKey: 'CourseCategoryId'
-            }
+            models.Course
         );
+        // CourseCategory.belongsTo(
+        //     models.CourseCategory,
+        //     {
+        //         foreignKey: 'parent'
+        //     }
+        // );
+        // CourseCategory.hasMany(
+        //     models.CourseCategory
+        // );
     };
     return CourseCategory;
 };

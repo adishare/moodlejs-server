@@ -5,13 +5,13 @@ module.exports = function(sequelize, DataTypes) {
         {
             category: { type: DataTypes.INTEGER, allowNull: true },
             sortorder: { type: DataTypes.INTEGER, allowNull: true },
-            startdate: { type: DataTypes.INTEGER, allowNull: true },
-            enddate: { type: DataTypes.INTEGER, allowNull: true },
+            startdate: { type: DataTypes.BIGINT, allowNull: true },
+            enddate: { type: DataTypes.BIGINT, allowNull: true },
             marker: { type: DataTypes.INTEGER, allowNull: true },
             maxbytes: { type: DataTypes.INTEGER, allowNull: true },
             defaultgroupingid: { type: DataTypes.INTEGER, allowNull: true },
-            timecreated: { type: DataTypes.INTEGER, allowNull: false },
-            timemodified: { type: DataTypes.INTEGER, allowNull: false },
+            timecreated: { type: DataTypes.BIGINT, allowNull: false },
+            timemodified: { type: DataTypes.BIGINT, allowNull: false },
             cacherev: { type: DataTypes.INTEGER, allowNull: true },
             visible: { type: DataTypes.STRING, allowNull: false },
             visibleold: { type: DataTypes.STRING, allowNull: true },
@@ -40,18 +40,17 @@ module.exports = function(sequelize, DataTypes) {
         }
     );
     Course.associate = function(models) { 
-        Course.hasMany(
-            models.CourseCategory,
-            {
+        Course.belongsTo(
+            models.CourseCategory, {
                 foreignKey: 'category'
             }
         );
-        Course.belongsTo(
-            models.Enrol,
-            {
-                foreignKey: 'courseId'
-            }
-        );
+        // Course.belongsTo(
+        //     models.Enrol,
+        //     {
+        //         foreignKey: 'courseId'
+        //     }
+        // );
     };
     return Course;
 };

@@ -3,6 +3,7 @@ const Op = require('../models/index').Sequelize.Op;
 const utils = require('./utils');
 const logger = require('../utils').logger;
 const Course = require ('../models').Course;
+const CourseCategory = require ('../models').CourseCategory;
 
 module.exports = {
     /**
@@ -62,6 +63,7 @@ module.exports = {
     },
     
     async createRecord(req, res) {
+        console.log(req.body);
         try {
             const result = await Course.create({
                 category: req.body.category,
@@ -71,8 +73,8 @@ module.exports = {
                 marker: req.body.marker,
                 maxbytes: req.body.maxbytes,
                 defaultgroupingid: req.body.defaultgroupingid,
-                timecreated: req.body.timecreated,
-                timemodified: req.body.timemodified,
+                timecreated: req.body.timecreated || new Date().getTime(),
+                timemodified: req.body.timemodified || new Date().getTime(),
                 cacherev: req.body.cacherev,
                 visible: req.body.visible,
                 visibleold: req.body.visibleold,
@@ -154,6 +156,9 @@ module.exports = {
         try {
             const result = await Course.findOne({
                 where: { id: req.params.id },
+                include: [
+                    { model: CourseCategory }, // load all pictures
+                ]
             });
             if(result){
                 res.status(200).send(result);
@@ -170,7 +175,11 @@ module.exports = {
     async listAll(req, res) {
         try {
             var results = await Course.findAll({
+                include: [
+                    { model: CourseCategory }, 
+                ]
             });
+            console.log(results);
             return res.status(200).send(results);
         } catch (error) {
             logger.error('List on Course with error: ' + error);

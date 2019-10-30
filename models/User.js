@@ -62,15 +62,15 @@ module.exports = function(sequelize, DataTypes) {
     User.associate = function(models) { 
         User.belongsTo(
             models.UserEnrolment,
-            {
-                foreignKey: 'UserId'
-            }
+            // {
+            //     foreignKey: 'UserId'
+            // }
         );
         User.belongsTo(
             models.UserEnrolment,
-            {
-                foreignKey: 'modifierId'
-            }
+            // {
+            //     foreignKey: 'modifierId'
+            // }
         );
     };
     return User;
